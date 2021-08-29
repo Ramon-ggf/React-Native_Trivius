@@ -6,7 +6,7 @@ import {
   QuestionCard,
   QuestionText,
 } from "./Questions.styles";
-import { TouchableOpacity , Vibration} from "react-native";
+import { TouchableOpacity, Vibration } from "react-native";
 
 export const Questions = ({ singleQuestion }) => {
   console.log("Question en si", singleQuestion);
@@ -44,10 +44,16 @@ export const Questions = ({ singleQuestion }) => {
     }
   };
 
+  const answerChecker = (selectedAnswer) => {
+    setGamerAnswer(selectedAnswer === correct_answer ? true : false);
+  };
+
   const onPressHandler = (targetAnswer) => {
-    setGamerAnswer( targetAnswer === correct_answer ? true : false);
+    answerChecker(targetAnswer);
     Vibration.vibrate(300);
   };
+
+  console.log(gamerAnswer);
 
   return (
     <Card>
@@ -57,9 +63,9 @@ export const Questions = ({ singleQuestion }) => {
       <QuestionCard category={CategoryFilter()}>
         <QuestionText>{question}</QuestionText>
       </QuestionCard>
-      {randomAnswers(answers).map((answer) => {
+      {randomAnswers(answers).map((answer, idx) => {
         return (
-          <TouchableOpacity onPress={() => onPressHandler(answer)}>
+          <TouchableOpacity onPress={() => onPressHandler(answer)} key={idx}>
             <QuestionCard category={CategoryFilter()}>
               <QuestionText>{answer}</QuestionText>
             </QuestionCard>

@@ -32,7 +32,6 @@ export const GameBoard = ({ navigation, route }) => {
     const selectedQuestion = questions[random];
     selectedQuestions.push(selectedQuestion);
     setSingleQuestion(selectedQuestion);
-
   };
 
   return (

@@ -1,4 +1,3 @@
-import { createNavigatorFactory } from "@react-navigation/native";
 import styled from "styled-components/native";
 
 const colorPicker = (category) => {
